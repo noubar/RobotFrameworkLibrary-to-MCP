@@ -51,4 +51,15 @@ Here is an example with vscode insiders
     }
 }
 ```
-Thats it 
+Thats it
+
+## Demo
+
+I will be documenting a demo using [MailClientLibrary](https://github.com/noubar/RobotFramework-MailClientLibrary)
+
+```
+from src.MailClientLibrary import MailClientLibrary 
+a = MailClientLibrary(Username="user", Password="pass", MailServerAddress="127.0.0.1", ImapPorts=[993,143], Pop3Ports=[995,110], SmtpPorts=[465,25]).to_mcp()
+a.run(transport='stdio')
+print(a)
+```
