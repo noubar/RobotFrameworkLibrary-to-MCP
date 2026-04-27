@@ -21,22 +21,14 @@ How to turn any robot framework library to a mcp server
             mcp.add_tool(kw)
         return mcp
 ```
-Run the following Code in a py file in the root folder of library:
-
-```
-from src.LibraryName import LibraryName 
-a = LibraryName().to_mcp()
-a.run(transport='stdio')
-```
 
 You can use it in any MCP Client
 Here is an example with vscode insiders
 
-1. press ctrl shift p and type MCP:Add Server
+1. press ctrl shift p and type ```MCP: Open Workspace Folder Configuration```. (Click on create if does not exist)
 1. Add the following lines
 ```
 {
-    "mcp": {
         "servers": {
             "LibName": {
                 "type": "stdio",
@@ -48,10 +40,26 @@ Here is an example with vscode insiders
                     "test.py"] # the new py file name where you run the server
             }
         }
-    }
 }
 ```
+You could run the following Code in a py file in the root folder of library:
+
+```
+from src.LibraryName import LibraryName
+if __name__ == "__main__":
+    LibraryName().to_mcp().run(transport="stdio")
+```
+Or 
+
+<img width="564" height="246" alt="image" src="https://github.com/user-attachments/assets/274ae0d0-7c93-4838-b35c-4b595188718e" />
+
 Thats it
+
+
+You can then check it under ctrl shift p with
+``` MCP: List Servers ```
+
+
 
 ## Demo
 
@@ -63,3 +71,21 @@ a = MailClientLibrary(Username="user", Password="pass", MailServerAddress="127.0
 a.run(transport='stdio')
 print(a)
 ```
+
+## CODEX
+under project root folder add .cortex/config.toml file with the following input
+```
+[mcp_servers.mail-client]
+command = "uv"
+args = [
+  "--directory",
+  "C:\\Repos\\RobotFramework-MailClientLibrary",
+  "run",
+  "mail_mcp_server.py",
+]
+cwd = "C:\\Repos\\RobotFramework-MailClientLibrary"
+
+```
+
+open a new session and ask:
+ist all mcp servers you can access
