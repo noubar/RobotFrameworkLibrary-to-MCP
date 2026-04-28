@@ -23,7 +23,6 @@ How to turn any robot framework library to a mcp server
 ```
 
 You can use it in any MCP Client
-Here is an example with vscode insiders
 
 1. press ctrl shift p and type ```MCP: Open Workspace Folder Configuration```. (Click on create if does not exist)
 1. Add the following lines
